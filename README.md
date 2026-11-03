@@ -2,6 +2,12 @@
 
 Sito istituzionale di Biancamedical di Clementi Paolo, con catalogo, ricerca dei prodotti e schede interne al sito.
 
+- Sito: https://biancamedical.it/
+- Repository dedicato: https://github.com/silviapicuti-pqt/biancamedical
+- Ramo di pubblicazione: `main`.
+
+Il progetto e' indipendente dal sito del Premio Arnaldo Picuti presente nello stesso account.
+
 ## Struttura
 
 - `dist/`: sito completo pronto per la pubblicazione, con immagini, dati e cataloghi PDF.
@@ -34,7 +40,7 @@ Solo dopo la configurazione su GitHub, sostituire i due record A attualmente dir
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
 
-Il record CNAME `www` deve puntare a **NOME-ACCOUNT.github.io**, sostituendo NOME-ACCOUNT con il proprietario effettivo del repository. Non aggiungere il nome del repository al valore DNS.
+Il record CNAME `www` deve puntare a **silviapicuti-pqt.github.io**. Non aggiungere il nome del repository al valore DNS.
 
 Lasciare invariati i record della posta e i Name Server Aruba. I vecchi TXT di verifica dell'hosting precedente non puntano il traffico al sito e non vanno sostituiti con il codice GitHub: la verifica GitHub usa un record dedicato generato nell'account.
 
@@ -42,7 +48,7 @@ Attendere la verifica DNS e la disponibilita' del certificato, poi abilitare **E
 
 ## Riservatezza e piani
 
-Il proprietario ha autorizzato la pubblicazione del sito su GitHub Pages. La visibilita' del repository deve essere scelta separatamente in base al piano dell'account. GitHub Free supporta Pages da repository pubblici; GitHub Pro e altri piani supportano anche repository privati. Un repository privato non rende privato il sito Pages.
+Il proprietario ha autorizzato sia la pubblicazione del sito su GitHub Pages sia la visibilita' pubblica di questo repository. Il progetto non contiene password, credenziali o configurazioni riservate del precedente hosting. GitHub Free supporta Pages da repository pubblici; GitHub Pro e altri piani supportano anche repository privati. Un repository privato non rende privato il sito Pages.
 
 ## Catalogo
 
