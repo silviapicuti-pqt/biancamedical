@@ -4,33 +4,50 @@ menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Apri navigazione')}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
 
-// Keep anchor navigation native, adding a short fade as the chosen section arrives.
+// Fade the visible page out, move to the requested section, then reveal it.
+// Navigation never depends on an observer firing halfway through a long scroll.
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let pendingSection=null;
-let sectionAnimation=null;
-function fadeSection(section){
-  if(reducedMotion.matches||typeof section.animate!=='function')return;
-  sectionAnimation?.cancel();
-  sectionAnimation=section.animate([{opacity:.62,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:520,easing:'cubic-bezier(.2,.65,.3,1)'});
+const main=document.querySelector('main');
+let navigationVersion=0;
+let navigationAnimation=null;
+let openingAnimations=[];
+const canAnimate=main&&typeof main.animate==='function';
+if(canAnimate&&!reducedMotion.matches){
+  const intro=document.querySelectorAll('.hero-top,.hero-copy,.hero-bottom');
+  openingAnimations=[...intro].map((element,index)=>element.animate([
+    {opacity:0,transform:'translateY(16px)'},
+    {opacity:1,transform:'translateY(0)'}
+  ],{duration:950,delay:index*140,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
 }
-const sectionObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{
-  for(const entry of entries){
-    if(entry.isIntersecting&&entry.target===pendingSection){
-      pendingSection=null;
-      fadeSection(entry.target);
-    }
-  }
-},{rootMargin:'-120px 0px -12% 0px',threshold:0}):null;
-document.querySelectorAll('main>section').forEach(section=>sectionObserver?.observe(section));
-document.addEventListener('click',event=>{
+document.addEventListener('click',async event=>{
   if(event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
   const link=event.target.closest('a[href^="#"]');
-  if(!link||reducedMotion.matches)return;
+  if(!link||reducedMotion.matches||!canAnimate)return;
   const target=document.getElementById(link.getAttribute('href').slice(1));
   if(!target?.matches('main>section'))return;
-  const bounds=target.getBoundingClientRect();
-  if(!sectionObserver||(bounds.top<window.innerHeight*.88&&bounds.bottom>120)){
-    pendingSection=null;
-    fadeSection(target);
-  }else pendingSection=target;
+  event.preventDefault();
+  const version=++navigationVersion;
+  openingAnimations.forEach(animation=>animation.cancel());
+  navigationAnimation?.cancel();
+  navigationAnimation=main.animate([{opacity:1},{opacity:.38}],{duration:180,fill:'forwards',easing:'ease-out'});
+  await navigationAnimation.finished.catch(()=>{});
+  if(version!==navigationVersion)return;
+  const hash=link.getAttribute('href');
+  if(location.hash!==hash)history.pushState(null,'',hash);
+  target.scrollIntoView({behavior:'instant',block:'start'});
+  target.setAttribute('tabindex','-1');
+  target.focus({preventScroll:true});
+  navigationAnimation.cancel();
+  navigationAnimation=main.animate([{opacity:.38},{opacity:1}],{duration:620,easing:'cubic-bezier(.2,.65,.3,1)'});
+});
+reducedMotion.addEventListener('change',event=>{
+  if(event.matches){
+    ++navigationVersion;
+    navigationAnimation?.cancel();
+    openingAnimations.forEach(animation=>animation.cancel());
+  }
+});
+window.addEventListener('popstate',()=>{
+  ++navigationVersion;
+  navigationAnimation?.cancel();
 });
