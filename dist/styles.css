@@ -18,20 +18,27 @@ nav{gap:25px}.services{background:var(--navy);color:white}.services .section-lab
 
 footer{flex-wrap:wrap}.footer-legal{width:100%;flex-basis:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:11px;line-height:1.8}.footer-legal a{text-decoration:underline;text-underline-offset:4px}.footer-legal a:hover{color:var(--navy)}@media(max-width:760px){.footer-legal{order:5;align-items:flex-start;flex-direction:column;gap:10px}}
 
-/* Display both supplied logos in their original colours, stacked in the masthead. */
-header{height:160px;gap:30px;background:var(--navy);color:#fff;border-bottom:1px solid #ffffff1c}
-html{scroll-padding-top:174px}
+/* Keep the primary logo in the masthead, in its original colours. */
+header{height:108px;gap:30px;background:var(--navy);color:#fff;border-bottom:1px solid #ffffff1c}
+html{scroll-padding-top:122px}
 .header-brand{display:flex;flex-direction:column;align-items:flex-start;gap:7px;flex:0 0 330px;overflow:hidden}
 .header-brand img{display:block;object-fit:cover;object-position:center;filter:none;mix-blend-mode:normal}
 .header-brand .brand-primary{width:100%;height:76px}
-.header-brand .brand-secondary{width:106px;height:auto}
 header nav a:hover,header .menu{color:#fff}
 header nav a:hover{color:var(--cyan)}
 header .nav-contact{border-color:#ffffff40}
 header .nav-contact:hover{border-color:var(--cyan)}
-.hero{background:radial-gradient(ellipse at 85% 100%,#14618545,transparent 65%),var(--navy)}
+.hero{position:relative;isolation:isolate;background:radial-gradient(ellipse at 85% 100%,#14618545,transparent 65%),var(--navy)}
+.hero>*{position:relative;z-index:1}
+.hero::after{content:"";position:absolute;z-index:0;pointer-events:none;width:850px;height:850px;right:-260px;top:-480px;background:radial-gradient(circle,#2cb9eb30,transparent 67%);animation:hero-light-in 3s ease-out both}
+@keyframes hero-light-in{from{opacity:0;transform:translate(90px,40px) scale(.8)}to{opacity:1;transform:translate(0,0) scale(1)}}
 .hero-bottom{margin-top:52px}
 .contact-details a[href^="tel:"]{display:block;width:fit-content;margin-top:6px}
+.contact-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:28px}
+.contact-legacy-frame{position:relative;display:grid;place-items:center;width:150px;aspect-ratio:1;margin:0;padding:16px;background:#f0f8fb;border:1px solid #ffffffb3;box-shadow:0 12px 35px #031e3033;flex-shrink:0}
+.contact-legacy-frame::before{content:"";position:absolute;inset:7px;border:1px solid #b4cdd8;pointer-events:none}
+.contact-legacy-frame img{display:block;width:100%;height:auto}
+.contact-actions .button{gap:15px}
 @media(min-width:761px) and (max-width:1100px){header{gap:22px}.header-brand{flex-basis:260px}.header-brand .brand-primary{height:66px}nav{gap:17px;font-size:12px}}
-@media(max-width:760px){header{height:134px;gap:15px}.header-brand{flex:0 1 250px;min-width:0;gap:5px}.header-brand .brand-primary{height:58px}.header-brand .brand-secondary{width:90px}.menu{flex-shrink:0;white-space:nowrap}html{scroll-padding-top:147px}nav{top:134px;background:var(--navy);border-bottom-color:#ffffff26}.hero-bottom{margin-top:34px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:760px){header{height:88px;gap:15px}.header-brand{flex:0 1 250px;min-width:0;gap:5px}.header-brand .brand-primary{height:58px}.menu{flex-shrink:0;white-space:nowrap}html{scroll-padding-top:101px}nav{top:88px;background:var(--navy);border-bottom-color:#ffffff26}.hero-bottom{margin-top:34px}.contact-actions{gap:18px}.contact-legacy-frame{width:120px;padding:13px}.contact-actions .button{padding:16px;gap:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero::after{animation:none}}

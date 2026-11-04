@@ -13,11 +13,11 @@ let navigationAnimation=null;
 let openingAnimations=[];
 const canAnimate=main&&typeof main.animate==='function';
 if(canAnimate&&!reducedMotion.matches){
-  const intro=document.querySelectorAll('.hero-top,.hero-copy,.hero-bottom');
+  const intro=document.querySelectorAll('.hero-top,.hero-copy h1,.hero-copy>p,.hero-bottom');
   openingAnimations=[...intro].map((element,index)=>element.animate([
-    {opacity:0,transform:'translateY(16px)'},
+    {opacity:0,transform:'translateY(32px)'},
     {opacity:1,transform:'translateY(0)'}
-  ],{duration:950,delay:index*140,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
+  ],{duration:1400,delay:index*180,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
 }
 document.addEventListener('click',async event=>{
   if(event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
@@ -29,7 +29,7 @@ document.addEventListener('click',async event=>{
   const version=++navigationVersion;
   openingAnimations.forEach(animation=>animation.cancel());
   navigationAnimation?.cancel();
-  navigationAnimation=main.animate([{opacity:1},{opacity:.38}],{duration:180,fill:'forwards',easing:'ease-out'});
+  navigationAnimation=main.animate([{opacity:1},{opacity:.08}],{duration:280,fill:'forwards',easing:'ease-out'});
   await navigationAnimation.finished.catch(()=>{});
   if(version!==navigationVersion)return;
   const hash=link.getAttribute('href');
@@ -38,7 +38,7 @@ document.addEventListener('click',async event=>{
   target.setAttribute('tabindex','-1');
   target.focus({preventScroll:true});
   navigationAnimation.cancel();
-  navigationAnimation=main.animate([{opacity:.38},{opacity:1}],{duration:620,easing:'cubic-bezier(.2,.65,.3,1)'});
+  navigationAnimation=main.animate([{opacity:.38},{opacity:1}],{duration:1050,easing:'cubic-bezier(.2,.65,.3,1)'});
 });
 reducedMotion.addEventListener('change',event=>{
   if(event.matches){
@@ -51,3 +51,20 @@ window.addEventListener('popstate',()=>{
   ++navigationVersion;
   navigationAnimation?.cancel();
 });
+
+// Reveal section content as it enters the viewport, including during manual scrolling.
+if(canAnimate&&'IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver(entries=>{
+    for(const entry of entries){
+      if(!entry.isIntersecting)continue;
+      revealObserver.unobserve(entry.target);
+      if(reducedMotion.matches||navigationAnimation?.playState==='running')continue;
+      const animation=entry.target.animate([
+        {opacity:.12,transform:'translateY(22px)'},
+        {opacity:1,transform:'translateY(0)'}
+      ],{duration:1100,easing:'cubic-bezier(.2,.65,.3,1)'});
+      openingAnimations.push(animation);
+    }
+  },{threshold:.08});
+  document.querySelectorAll('.section-label,.identity-grid,.facts,.services-heading,.service-grid,.history-grid,.areas-heading,.clinical-areas,.catalog-layout,.contact-grid').forEach(element=>revealObserver.observe(element));
+}
