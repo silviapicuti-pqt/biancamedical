@@ -13,7 +13,7 @@ let navigationAnimation=null;
 let openingAnimations=[];
 const canAnimate=main&&typeof main.animate==='function';
 if(canAnimate&&!reducedMotion.matches){
-  const intro=document.querySelectorAll('.hero-top,.hero-copy h1,.hero-copy>p,.hero-bottom');
+  const intro=document.querySelectorAll('.hero-top,.hero-copy h1,.hero-copy>p,.hero-bottom,.offers-hero h1,.offers-intro');
   openingAnimations=[...intro].map((element,index)=>element.animate([
     {opacity:0,transform:'translateY(32px)'},
     {opacity:1,transform:'translateY(0)'}
@@ -66,5 +66,5 @@ if(canAnimate&&'IntersectionObserver' in window){
       openingAnimations.push(animation);
     }
   },{threshold:.08});
-  document.querySelectorAll('.section-label,.identity-grid,.facts,.services-heading,.service-grid,.history-grid,.areas-heading,.clinical-areas,.catalog-layout,.contact-grid').forEach(element=>revealObserver.observe(element));
+  document.querySelectorAll('.section-label,.identity-grid,.facts,.services-heading,.service-grid,.history-grid,.areas-heading,.clinical-areas,.catalog-layout,.contact-grid,.offers-heading,.offer-grid').forEach(element=>revealObserver.observe(element));
 }
