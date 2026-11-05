@@ -42,3 +42,6 @@ header .nav-contact:hover{border-color:var(--cyan)}
 @media(min-width:761px) and (max-width:1100px){header{gap:22px}.header-brand{flex-basis:260px}.header-brand .brand-primary{height:66px}nav{gap:17px;font-size:12px}}
 @media(max-width:760px){header{height:88px;gap:15px}.header-brand{flex:0 1 250px;min-width:0;gap:5px}.header-brand .brand-primary{height:58px}.menu{flex-shrink:0;white-space:nowrap}html{scroll-padding-top:101px}nav{top:88px;background:var(--navy);border-bottom-color:#ffffff26}.hero-bottom{margin-top:34px}.contact-actions{gap:18px}.contact-legacy-frame{width:120px;padding:13px}.contact-actions .button{padding:16px;gap:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero::after{animation:none}}
+
+/* Reserve a separate column for the founding year on small screens. */
+@media(max-width:760px){.history-title{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:18px;align-items:center}.history-title .year-art{position:static;grid-column:2;grid-row:1;font-size:clamp(76px,23vw,110px);letter-spacing:-7px;justify-self:end;line-height:.8}.history-title h2{grid-column:1;grid-row:1;margin-top:0;font-size:clamp(26px,7vw,36px);min-width:0}.history-title>p{grid-column:1 / -1;max-width:none;margin-top:22px;margin-bottom:0}}
