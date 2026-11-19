@@ -66,3 +66,6 @@
 .contact-details .recapito-text{display:block;color:inherit;font-size:inherit;letter-spacing:inherit;margin:0}
 .site-footer .recapito-row{margin-top:5px}
 .site-footer a[href="mailto:clementipaolo@libero.it"] .recapito-icon{color:inherit}
+
+/* Readable product guidance and local supply information. */
+.product-guidance{margin:32px 0}.product-guidance section+section{margin-top:27px}.product-guidance h3{font:600 22px/1.4 Manrope,Arial,sans-serif;letter-spacing:-.4px;margin:0 0 12px;scroll-margin-top:125px}.product-guidance p,.local-supply p:not(.kicker){font-size:16px;line-height:1.85;color:#526b7a;margin:0 0 18px}.local-supply{padding-top:40px;padding-bottom:45px;border-top:1px solid #d7e1e5}.local-supply h2{font-size:clamp(28px,3vw,40px);letter-spacing:-1px;max-width:950px;margin-bottom:23px}.local-supply a{color:#126b92;text-decoration:underline;text-underline-offset:4px;line-height:1.7;font-size:16px}.local-supply>a{font-weight:600}.site-footer .recapito-link:hover .recapito-icon,.site-footer .recapito-link:focus-visible .recapito-icon{color:#fff}@media(max-width:600px){.product-guidance h3{font-size:21px}.local-supply{padding-top:32px;padding-bottom:35px}}
