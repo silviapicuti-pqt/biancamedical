@@ -47,13 +47,13 @@
 .site-footer .footer-contact{gap:12px;font-size:16px;font-weight:550;min-width:0}
 .site-footer .footer-contact a{width:fit-content;max-width:100%;overflow-wrap:anywhere}
 .site-footer .footer-contact a:hover{color:#62c4f1}
-.site-footer .footer-contact a[href^="mailto:"]{background:#62c4f1;color:#06283d;border:1px solid #62c4f1;padding:12px 17px;margin-top:3px;font-size:14px;font-weight:700;line-height:1.4;transition:background .2s,color .2s}
-.site-footer .footer-contact a[href^="mailto:"]:hover{background:#a3e3ff;border-color:#a3e3ff;color:#06283d}
+.site-footer .footer-contact a[href="mailto:clementipaolo@libero.it"]{background:#62c4f1;color:#06283d;border:1px solid #62c4f1;padding:12px 17px;margin-top:3px;font-size:14px;font-weight:700;line-height:1.4;transition:background .2s,color .2s}
+.site-footer .footer-contact a[href="mailto:clementipaolo@libero.it"]:hover{background:#a3e3ff;border-color:#a3e3ff;color:#06283d}
 .site-footer .footer-nav{display:flex;gap:18px 30px;border-top:1px solid #ffffff33;padding:27px 0;font-size:14px;font-weight:550}
 .site-footer .footer-nav a{color:#f1f8fc;line-height:1.6}
 .site-footer .footer-nav a:hover{color:#62c4f1}
 .site-footer .footer-legal{border-top:1px solid #ffffff33;color:#c2d8e2;padding-top:23px;font-size:12px;line-height:1.7}
 .site-footer .footer-legal a{color:#fff;text-decoration-color:#62c4f1}
 .site-footer .footer-legal a:hover{color:#62c4f1}
-@media(max-width:1000px){.site-footer .footer-main{grid-template-columns:1fr 1fr;gap:26px 32px}.site-footer .footer-contact{grid-column:1 / -1;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:18px 28px}.site-footer .footer-contact a[href^="mailto:"]{margin-top:0}}
-@media(max-width:600px){.site-footer{padding:36px 6% 26px}.site-footer .footer-main{grid-template-columns:1fr;gap:23px;margin-bottom:28px}.site-footer .wordmark{font-size:29px}.site-footer .footer-main>p{font-size:14px;max-width:none}.site-footer .footer-contact{grid-column:auto;flex-direction:column;align-items:flex-start;gap:15px}.site-footer .footer-contact a[href^="mailto:"]{margin-top:3px}.site-footer .footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:17px 22px;padding:24px 0;font-size:14px}.site-footer .footer-legal{gap:13px}}
+@media(max-width:1000px){.site-footer .footer-main{grid-template-columns:1fr 1fr;gap:26px 32px}.site-footer .footer-contact{grid-column:1 / -1;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:18px 28px}.site-footer .footer-contact a[href="mailto:clementipaolo@libero.it"]{margin-top:0}}
+@media(max-width:600px){.site-footer{padding:36px 6% 26px}.site-footer .footer-main{grid-template-columns:1fr;gap:23px;margin-bottom:28px}.site-footer .wordmark{font-size:29px}.site-footer .footer-main>p{font-size:14px;max-width:none}.site-footer .footer-contact{grid-column:auto;flex-direction:column;align-items:flex-start;gap:15px}.site-footer .footer-contact a[href="mailto:clementipaolo@libero.it"]{margin-top:3px}.site-footer .footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:17px 22px;padding:24px 0;font-size:14px}.site-footer .footer-legal{gap:13px}}
