@@ -57,3 +57,12 @@
 .site-footer .footer-legal a:hover{color:#62c4f1}
 @media(max-width:1000px){.site-footer .footer-main{grid-template-columns:1fr 1fr;gap:26px 32px}.site-footer .footer-contact{grid-column:1 / -1;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:18px 28px}.site-footer .footer-contact a[href="mailto:clementipaolo@libero.it"]{margin-top:0}}
 @media(max-width:600px){.site-footer{padding:36px 6% 26px}.site-footer .footer-main{grid-template-columns:1fr;gap:23px;margin-bottom:28px}.site-footer .wordmark{font-size:29px}.site-footer .footer-main>p{font-size:14px;max-width:none}.site-footer .footer-contact{grid-column:auto;flex-direction:column;align-items:flex-start;gap:15px}.site-footer .footer-contact a[href="mailto:clementipaolo@libero.it"]{margin-top:3px}.site-footer .footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:17px 22px;padding:24px 0;font-size:14px}.site-footer .footer-legal{gap:13px}}
+
+/* Contact symbols stay aligned with their labels, including wrapped mobile text. */
+.contact-details a.recapito-link,.site-footer a.recapito-link,.recapito-row{display:inline-flex;align-items:flex-start;gap:10px;max-width:100%}
+.contact-details a.recapito-link[href^="tel:"]{display:flex}
+.recapito-icon{display:block;flex:0 0 20px;width:20px;height:20px;margin-top:.2em;color:#62c4f1}
+.recapito-text{min-width:0;overflow-wrap:anywhere}
+.contact-details .recapito-text{display:block;color:inherit;font-size:inherit;letter-spacing:inherit;margin:0}
+.site-footer .recapito-row{margin-top:5px}
+.site-footer a[href="mailto:clementipaolo@libero.it"] .recapito-icon{color:inherit}
